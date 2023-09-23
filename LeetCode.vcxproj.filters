@@ -24,5 +24,8 @@
     <ClCompile Include="417. 太平洋大西洋水流问题.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="827. 最大人工岛.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
 </Project>

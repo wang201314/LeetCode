@@ -15,6 +15,7 @@
 //	0 <= heights[r][c] <= 105
 #include<iostream>
 #include<vector>
+#include<queue>
 #include<string>
 #include<algorithm>
 using namespace std;
@@ -31,12 +32,44 @@ public:
 		{
 			int newr = row + dir[i][0];
 			int newc = col + dir[i][1];
-			if (newr < 0 || newr >= heights.size() || newc < 0 || newc >= heights[0].size() || heights[newr][newc] < heights[row][col])
+			if (newr < 0 || newr >= heights.size() || newc < 0 || newc >= heights[0].size() || visited[newr][newc]|| heights[newr][newc] < heights[row][col])
 			{
 				continue;
 			}
 			dfs(heights, visited, newr, newc);
 		}
+	}
+	void bfs(vector<vector<int>>& heights, vector<vector<bool>>&visited, int row, int col)
+	{
+		if (visited[row][col])
+			return;
+		visited[row][col] = true;
+		queue<pair<int, int>>que;
+		que.push({ row,col });
+		while (!que.empty())
+		{
+			int size = que.size();
+			for (int i = 0; i < size; i++)
+			{
+				int cr = que.front().first;
+				int cc = que.front().second;
+				
+				que.pop();
+				for (int j = 0; j < 4; j++)
+				{
+					int newr = cr + dir[j][0];
+					int newc = cc + dir[j][1];
+					if (newr < 0 || newr >= heights.size() || newc < 0 || newc >= heights[0].size() || visited[newr][newc] || heights[newr][newc] < heights[cr][cc])
+						continue;
+					visited[newr][newc] = true;
+					que.push({newr,newc});
+				}
+			}
+		}
+	}
+	void search(void(Solution::*f)(vector<vector<int>>& heights, vector<vector<bool>>&visited, int row, int col),vector<vector<int>>& heights, vector<vector<bool>>&visited, int row, int col)
+	{
+		(this->*f)(heights, visited, row, col);
 	}
 	vector<vector<int>> pacificAtlantic(vector<vector<int>>& heights) {
 		vector<vector<int>>ans;
@@ -44,16 +77,23 @@ public:
 		int col = heights[0].size();
 		vector<vector<bool>>visited(row, vector<bool>(col, false));
 		vector<vector<bool>>visited1(row, vector<bool>(col, false));
-
+		using MemberFunctionPtr = void (Solution::*)(vector<vector<int>>&, vector<vector<bool>>&, int, int);
+		MemberFunctionPtr f = &Solution::bfs;
 		for (int i = 0; i < col; i++)
 		{
-			dfs(heights, visited, 0, i);
-			dfs(heights, visited1, row - 1, i);
+			(this->*f)(heights, visited, 0, i);
+			(this->*f)(heights, visited1, row - 1, i);
+			//dfs(heights, visited, 0, i);
+			//dfs(heights, visited1, row - 1, i);
 		}
 		for (int i = 0; i < row; i++)
 		{
-			dfs(heights, visited, i, 0);
-			dfs(heights, visited1, i, col - 1);
+			/*search(&Solution::dfs, heights, visited, i, 0);
+			search(&Solution::dfs, heights, visited1, i, col-1);*/
+			(this->*f)(heights, visited, i, 0);
+			(this->*f)(heights, visited1, i, col - 1);
+			//dfs(heights, visited, i, 0);
+			//dfs(heights, visited1, i, col - 1);
 		}
 		for (int i = 0; i < row; i++)
 		{
@@ -66,33 +106,6 @@ public:
 			}
 		}
 		return ans;
-	}
-};
-class Solution1 {
-public:
-	int minCut(string s) {
-		int n = s.size();
-		vector<int>vec(n, INT_MAX);
-		vector<vector<bool>>dp(n, vector<bool>(n, true));
-		for (int i = n - 2; i >= 0; i--)
-		{
-			for (int j = i + 1; j < n; j++)
-			{
-				dp[i][j] = s[i] == s[j] && dp[i + 1][j - 1];
-			}
-		}
-		for (int i = 0; i < n; i++)
-		{
-			if (dp[0][i])
-				vec[i] = 0;
-			else
-			{
-				for (int j = 0; j < i; j++)
-					if (dp[j + 1][i])
-						vec[i] = min(vec[i], vec[j] + 1);
-			}
-		}
-		return vec[n - 1];
 	}
 };
 

@@ -12,7 +12,6 @@
 //s 仅由小写英文字母组成
 #include<iostream>
 #include<vector>
-#include<vector>
 #include<string>
 using namespace std;
 class Solution {

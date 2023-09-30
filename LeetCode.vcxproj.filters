@@ -27,5 +27,8 @@
     <ClCompile Include="827. 最大人工岛.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="127. 单词接龙.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
 </Project>

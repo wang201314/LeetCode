@@ -14,47 +14,41 @@
 //提示：
 //1 <= s.length <= 2000
 //s 仅由小写英文字母组成
-#include<iostream>
-#include<vector>
-#include<string>
-#include<algorithm>
+#include"leetcode.h"
 using namespace std;
-class Solution {
-public:
-	vector<string>vec;
-	vector<vector<bool>>dp;
-	size_t ans = INT_MAX;
-	void dfs(const string& str, int start)
+static vector<string>vec;
+static vector<vector<bool>>dp;
+static size_t ans = INT_MAX;
+static void dfs(const string& str, int start)
+{
+	if (start >= str.length())
 	{
-		if (start >= str.length())
+		ans = min(ans, vec.size());
+		return;
+	}
+	for (int i = 1; i + start <= str.length(); i++)
+	{
+		if (dp[start][i + start - 1])
 		{
-			ans=min(ans,vec.size());
-			return;
-		}
-		for (int i = 1; i + start <= str.length(); i++)
-		{
-			if (dp[start][i + start - 1])
-			{
-				vec.push_back(str.substr(start, i));
-				dfs(str, start + i);
-				vec.pop_back();
-			}
+			vec.push_back(str.substr(start, i));
+			dfs(str, start + i);
+			vec.pop_back();
 		}
 	}
-	int minCut(string s) {
-		int n = s.size();
-		dp.resize(n, vector<bool>(n, true));
-		for (int i = n - 2; i >= 0; i--)
+}
+int Solution::minCut(string s) {
+	int n = s.size();
+	dp.resize(n, vector<bool>(n, true));
+	for (int i = n - 2; i >= 0; i--)
+	{
+		for (int j = i + 1; j < n; j++)
 		{
-			for (int j = i + 1; j < n; j++)
-			{
-				dp[i][j] = s[i] == s[j] && dp[i + 1][j - 1];
-			}
+			dp[i][j] = s[i] == s[j] && dp[i + 1][j - 1];
 		}
-		dfs(s, 0);
-		return ans-1;
 	}
-};
+	dfs(s, 0);
+	return ans - 1;
+}
 class Solution1 {
 public:
 	int minCut(string s) {
@@ -82,12 +76,3 @@ public:
 		return vec[n-1];
 	}
 };
-
-int main()
-{
-	Solution1 s;
-	cout << s.minCut("cdd")<<endl;	
-	int a;
-	cin >> a;
-	return 0;
-}

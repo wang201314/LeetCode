@@ -10,53 +10,48 @@
 //提示：
 //1 <= s.length <= 16
 //s 仅由小写英文字母组成
-#include<iostream>
-#include<vector>
-#include<string>
+#include"leetcode.h"
 using namespace std;
-class Solution {
-public:
-	vector<vector<string>>ans;
-	vector<string>vec;
-	bool check(const string& s)
-	{
-		if (s.length() == 1)
-			return true;
-		int l = 0, r = s.length() - 1;
-		while (l <= r)
-		{
-			if (s[l++] != s[r--])
-			{
-				return false;
-			}
-		}
+static vector<vector<string>>ans;
+static vector<string>vec;
+static bool check(const string& s)
+{
+	if (s.length() == 1)
 		return true;
-	}
-	void dfs(const string& str, int start)
+	int l = 0, r = s.length() - 1;
+	while (l <= r)
 	{
-		//cout << start << endl;
-		if (start >= str.length())
+		if (s[l++] != s[r--])
 		{
-			ans.push_back(vec);
-			//vec.clear();
-			return;
-		}
-		for (int i = 1; i + start <= str.length(); i++)
-		{
-			string s = str.substr(start, i);
-			if (check(s))
-			{
-				vec.push_back(s);
-				dfs(str, start + i);
-				 vec.pop_back();
-			}
+			return false;
 		}
 	}
-	vector<vector<string>> partition(string s) {
-		dfs(s, 0);
-		return ans;
+	return true;
+}
+static void dfs(const string& str, int start)
+{
+	//cout << start << endl;
+	if (start >= str.length())
+	{
+		ans.push_back(vec);
+		//vec.clear();
+		return;
 	}
-};
+	for (int i = 1; i + start <= str.length(); i++)
+	{
+		string s = str.substr(start, i);
+		if (check(s))
+		{
+			vec.push_back(s);
+			dfs(str, start + i);
+			vec.pop_back();
+		}
+	}
+}
+vector<vector<string>> Solution::partition(string s) {
+	dfs(s, 0);
+	return ans;
+}
 class Solution1 {
 public:
 	vector<vector<string>>ans;
@@ -132,20 +127,3 @@ public:
 		return ans;
 	}
 };
-int main()
-{
-	Solution2 s;
-	vector<vector<string>>ans=s.partition("cdd");
-
-	for each (auto var in ans)
-	{
-		for each (auto v in var)
-		{
-			cout << v << " ";
-		};
-		cout << endl;
-	};
-	int a;
-	cin >> a;
-	return 0;
-}

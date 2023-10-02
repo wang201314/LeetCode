@@ -30,5 +30,19 @@
     <ClCompile Include="127. 单词接龙.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="841. 钥匙和房间.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="463. 岛屿的周长.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="main.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="leetcode.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>

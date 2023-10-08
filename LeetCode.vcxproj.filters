@@ -39,9 +39,66 @@
     <ClCompile Include="main.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="1971. 寻找图中是否存在路径.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="684. 冗余连接.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="685. 冗余连接 II.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="1365. 有多少小于当前数字的数字.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="941.有效的山脉数组.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="1207.独一无二的出现次数.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="283. 移动零.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="189. 轮转数组.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="724.寻找数组的中心下标.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="34. 在排序数组中查找元素的第一个和最后一个位置.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="922. 按奇偶排序数组II.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="35.搜索插入位置.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="24. 两两交换链表中的节点.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="234.回文链表.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="52. N皇后II.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="649. Dota2 参议院.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="1382.将二叉搜索树变平衡.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="leetcode.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="ListNode.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="TreeNode.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

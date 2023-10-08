@@ -10,7 +10,7 @@ using namespace std;
 
 static unordered_map<string, vector<string>>map;
 static unordered_set<string>visited;
-int  bfs(string start, string end)
+static int  bfs(string start, string end)
 {
 	queue<string>que;
 	que.push(start);
@@ -35,7 +35,7 @@ int  bfs(string start, string end)
 	}
 	return 0;
 }
-bool isValue(string a, string b)
+static bool isValue(string a, string b)
 {
 	int n = a.length();
 	int m = b.length();

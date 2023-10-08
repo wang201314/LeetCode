@@ -10,7 +10,7 @@ using namespace std;
 static int n;
 int dir[4][2] = { 1,0,-1,0,0,1,0,-1 };
 static int count;
-void dfs(vector<vector<int>>&grid, vector<vector<int>>&tag, int row, int col, int t)
+static void dfs(vector<vector<int>>&grid, vector<vector<int>>&tag, int row, int col, int t)
 {
 	if (tag[row][col] == t)
 		return;
